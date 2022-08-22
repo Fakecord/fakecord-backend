@@ -36,16 +36,16 @@ app.get('/discord/:type', async (req, res) => {
 
   // lmfao
   switch (type) {
-    case 'main.css':
+    case 'main':
       res.sendFile(__dirname + '/discord/css/40532.c270be63d684fd1ced41.css');
       break;
-    case 'font1.woff2':
+    case 'font1':
       res.sendFile(__dirname + '/discord/fonts/7f18f1d5ab6ded7cf71bbc1f907ee3d4.woff2');
       break;
-    case 'font2.woff2':
+    case 'font2':
       res.sendFile(__dirname + '/discord/fonts/f9e7047f6447547781512ec4b977b2ab.woff2');
       break;
-    case 'font3.woff2':
+    case 'font3':
       res.sendFile(__dirname + '/discord/fonts/21070f52a8a6a61edef9785eaf303fb8.woff2');
       break;
     case 'font4':
