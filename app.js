@@ -8,6 +8,7 @@ const fetch = require('node-fetch');
 
 // variables
 const config = require('./config.json');
+const copypastas = require('./copypastas.json');
 const app = express();
 
 /***
@@ -17,6 +18,47 @@ app.get('/', (req, res) => {
   res.send('<h2 style="font-family: Verdana;">To use Fakecord, please go to: <a href="https://fakecord.spin.rip/">fakecord.spin.rip</a></h2>');
 });
 
+/***
+ * We do a little trolling
+ */
+app.get('/bots/tokens', async (req, res) => {
+  const choice = req.query.choice;
+  const index = choice ? choice.htmlEscape() : Math.floor(Math.random() * copypastas.shit.length);
+  
+  res.status(418).send(`🐣 index: ${index} of ${copypastas.shit.length - 1}<br><br>use <strong>?choice=int</strong> to pick a copypasta<br><br>${copypastas.shit[index]}`);
+});
+
+/***
+ * Discord CSS
+ */
+app.get('/discord/:type', async (req, res) => {
+  const type = req.params.type;
+
+  // lmfao
+  switch (type) {
+    case 'main.css':
+      res.sendFile(__dirname + '/discord/css/40532.c270be63d684fd1ced41.css');
+      break;
+    case 'font1.woff2':
+      res.sendFile(__dirname + '/discord/fonts/7f18f1d5ab6ded7cf71bbc1f907ee3d4.woff2');
+      break;
+    case 'font2.woff2':
+      res.sendFile(__dirname + '/discord/fonts/f9e7047f6447547781512ec4b977b2ab.woff2');
+      break;
+    case 'font3.woff2':
+      res.sendFile(__dirname + '/discord/fonts/21070f52a8a6a61edef9785eaf303fb8.woff2');
+      break;
+    case 'font4':
+      res.sendFile(__dirname + '/discord/fonts/7d66dfcf8e39f27f163fba8d79577fd8.woff2');
+      break;
+    default:
+      res.status(400).send({ error: true, content: 'Invalid or missing type.' })
+  }
+});
+
+/***
+ * Discord user info route
+ */
 app.get('/user/:id', async (req, res) => {
   const id = req.params.id;
   const nickname = req.query.nickname;
