@@ -92,7 +92,7 @@ async function fetchDiscordUser(id, nickname, custom_avatar) {
         error: false,
         content: {
           username: nickname ? nickname : json.username,
-          avatar: (custom_avatar) ? custom_avatar : json.avatar ? `https://cdn.discordapp.com/avatars/${ json.id }/${ json.avatar }.${ json.avatar.substring(0, 2) === 'a_' ? 'gif' : 'png' }?size=40` : 'https://discordapp.com/assets/322c936a8c8be1b803cd94861bdfa868.png',
+          avatar: custom_avatar ? custom_avatar : json.avatar ? `https://cdn.discordapp.com/avatars/${ json.id }/${ json.avatar }.${ json.avatar.substring(0, 2) === 'a_' ? 'gif' : 'png' }?size=40` : 'https://discordapp.com/assets/322c936a8c8be1b803cd94861bdfa868.png',
           avatar_decoration: json.avatar_decoration
         }
       };
