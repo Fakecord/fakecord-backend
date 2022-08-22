@@ -29,14 +29,14 @@ app.get('/bots/tokens', async (req, res) => {
 });
 
 /***
- * Discord CSS
+ * Discord files
  */
 app.get('/discord/:type', async (req, res) => {
   const type = req.params.type;
 
   // lmfao
   switch (type) {
-    case 'main':
+    case 'css':
       res.sendFile(__dirname + '/discord/css/40532.c270be63d684fd1ced41.css');
       break;
     case 'font1':
